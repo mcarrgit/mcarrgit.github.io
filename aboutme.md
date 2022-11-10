@@ -4,13 +4,10 @@ title: About me
 subtitle: Why you'd want to go on a date with me
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+Platform/Cloud/DevOps (take your pick) Engineer working in the consulting space with a strong interest in all things Azure, Terraform and Kubernetes. 
 
-- I rock a great mustache
-- I'm extremely loyal to my family
+For more about me, visit: [www.mattcarr.info](https://www.mattcarr.info)
 
-What else do you need?
+### Contact me
 
-### My story
-
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](https://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+[me@mattcarr.info](mailto:me@mattcarr.info)
