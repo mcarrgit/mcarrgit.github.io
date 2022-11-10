@@ -2,7 +2,7 @@ In recent news Microsoft have released a pretty significant update to Azure Blob
 
 While Azure Blob Storage has previously supported secure data transfers via methods such as REST API, Azure SDKs and AzCopy - SFTP support has been a desired addition by many, as it's been a popular protocol for decades and is still in use in many organizations.
 
-In this post we're going to look at how to get started with this new feature, and then I'll share my thoughts on some of the advantages and disadvantages of the offering. At time of writing, the latest AzureRM provider (3.30.0) does not support the configuration of this feature, so we will deploy the required infrastructure via Terraform then move to the Azure Portal to enable and configure SFTP. 
+In this post we're going to look at how to get started with this new feature, and then I'll share my thoughts on the advantages and disadvantages of the offering. At the time of writing, the latest AzureRM provider (3.30.0) does not support the configuration of this feature, so we will deploy the required infrastructure via Terraform then move to the Azure Portal to enable and configure SFTP. 
 
 When the AzureRM provider is updated, I will revisit this post and include the Terraform configuration.
 
@@ -76,7 +76,7 @@ Once these files have been created, Terraform plan and Terraform Apply can be us
 
 # Configuring SFTP in the Azure Portal
 
-## Enabling SFTP on the Storage Account
+### Enabling SFTP on the Storage Account
 
 Enabling SFTP on a Storage Account is incredibly simple and can be done as following:
 
@@ -88,7 +88,7 @@ As mentioned earlier, you will need Heirarchical Namespaces enabled on the Stora
 
 *Note: enabling SFTP will also enable local users, which we cover in the next section.*
 
-## Adding local users
+### Adding local users
 
 Of course to use SFTP, your end users and systems are going to need a means of authentication. Azure Blob Storage allows you to create local users for authentication to the SFTP endpoint. They support the two following authentication methods:
 
@@ -149,19 +149,19 @@ As evident in the log, there's no issues here and the file has been uploaded suc
 
 # Final Thoughts
 
-## The Good
+### The Good
 
 SFTP for Azure Blob Storage is simple to use, easy to set-up and provides all the benefits of the shared responsibility model. You'll decrease your operations overhead in comparison to hosting your own SFTP server, and it keeps everything internal to Azure - removing the need to integrate other tools or systems to support SFTP for Azure Blob Storage.
 
 We've been waiting a long time for an Azure SFTP PaaS offering, and this is a great start.
 
-## The Bad
+### The Bad
 
 Unfortunately when using the SSH Password option there's no way to specify your own password, you have to deal with the password that Azure generates. While this may not necessarily be bad due to the fact it ensures you have a strong password - it can be inconvenient if you're looking to migrate legacy systems without having to go through a password reset process.
 
 The lack of integration with Azure AD is another area for improvement. While local users work fine, I would prefer RBAC authentication for human users, which could bring the benefit of supporting MFA.
 
-## The Ugly
+### The Ugly
 
 In my opinion, what is possibly the biggest downside with this offering is the pricing model, on top of the costs associated with the underlying storage account - Microsoft are charging $0.30 USD per hour for the enabling of the SFTP endpoint on a storage account. This comes to on average $219 USD a month. If you start setting up SFTP endpoints on **multiple** storage accounts the value proposition quickly derails, and you may find fully fledged file transfer products like GoAnywhere MFT to be the more attractive option.
 
